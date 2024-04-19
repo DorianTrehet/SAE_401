@@ -194,7 +194,8 @@ public function login()
         }
 
         // If email and password are correct, store user information in cookies
-        setcookie('user_email', $email, time() + (86400 * 30), '/'); // 30 days expiration
+        setcookie('user_id', $employee->getEmployeeId(), time() + (86400 * 30), '/');
+        setcookie('user_email', $email, time() + (86400 * 30), '/');
         setcookie('user_name', $employee->getEmployeeName(), time() + (86400 * 30), '/');
         setcookie('user_role', $employee->getEmployeeRole(), time() + (86400 * 30), '/');
 
