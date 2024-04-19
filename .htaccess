@@ -7,6 +7,9 @@ RewriteEngine On
 # Login
 RewriteRule ^login$ index.php [L]
 
+#Logout
+RewriteRule ^logout$ index.php [L]
+
 # Get all
 RewriteRule ^(brands|stores|products|employees|categories)$ index.php [L]
 

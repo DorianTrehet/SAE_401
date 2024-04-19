@@ -193,10 +193,30 @@ public function login()
             return;
         }
 
+        // If email and password are correct, store user information in cookies
+        setcookie('user_email', $email, time() + (86400 * 30), '/'); // 30 days expiration
+        setcookie('user_name', $employee->getEmployeeName(), time() + (86400 * 30), '/');
+        setcookie('user_role', $employee->getEmployeeRole(), time() + (86400 * 30), '/');
+
         // If email and password are correct, redirect the user to a different page upon successful login
         header('Location: app/src/View/EmployeeView.php');
         exit;
     }
+}
+
+/**
+ * Handle logout process
+ */
+public function logout()
+{
+    // Supprimer tous les cookies en relation avec l'employé
+    setcookie('user_email', '', time() - 3600, '/');
+    setcookie('user_name', '', time() - 3600, '/');
+    setcookie('user_role', '', time() - 3600, '/');
+
+    // Rediriger l'utilisateur vers la page de connexion
+    header('Location: app/src/View/indexView.php');
+    exit;
 }
 
     

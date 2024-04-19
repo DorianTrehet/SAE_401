@@ -47,9 +47,79 @@
                         </a>
                     </li>
                 </ul>
+                <?php
+                // Fonction pour récupérer tous les cookies
+                function getCookies() {
+                    $cookies = isset($_COOKIE) ? $_COOKIE : [];
+                    $cookiesObject = [];
+                    foreach ($cookies as $name => $value) {
+                        $cookiesObject[$name] = $value;
+                    }
+                    return $cookiesObject;
+                }
+
+                // Vérifier si le cookie user_role est défini
+                if (isset(getCookies()['user_role'])) {
+                    $user_role = getCookies()['user_role'];
+
+                    // Afficher différents éléments de menu en fonction du rôle de l'utilisateur
+                    echo '<ul class="navbar-nav me-auto mb-2 mb-lg-0">';
+                    switch ($user_role) {
+                        case 'employee':
+                            echo '<li class="nav-item">
+                                    <a class="nav-link" href="#">
+                                        <h4>Add/Modify/Delete</h4>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">
+                                        <h4>Edit Profile</h4>
+                                    </a>
+                                </li>';
+                            break;
+                        case 'chief':
+                            echo '<li class="nav-item">
+                                    <a class="nav-link" href="#">
+                                        <h4>View Employees</h4>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">
+                                        <h4>Add Employee</h4>
+                                    </a>
+                                </li>';
+                            break;
+                        case 'it':
+                            echo '<li class="nav-item">
+                                    <a class="nav-link" href="#">
+                                        <h4>View Employees</h4>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">
+                                        <h4>Add Employee</h4>
+                                    </a>
+                                </li>';
+                            break;
+                        default:
+                            // Si le rôle de l'utilisateur n'est pas reconnu, afficher un message d'erreur
+                            echo '<li class="nav-item">
+                                    <a class="nav-link" href="#">
+                                        <h4>Error: Unknown role</h4>
+                                    </a>
+                                </li>';
+                    }
+                    echo '</ul>';
+                    // Bouton de déconnexion
+                    echo '<form method="POST" action="/bikestores/logout">
+                            <button type="submit" class="btn btn-default btn-lg">Logout</button>
+                        </form>';
+                } else {
+                    // Si le cookie user_role n'est pas défini, afficher le bouton de connexion
+                    echo '<button type="button" class="btn btn-default btn-lg" id="myBtn">Login</button>';
+                }
+                ?>
             </div>
-            <!-- Trigger the modal with a button -->
-            <button type="button" class="btn btn-default btn-lg" id="myBtn">Login</button>
 
             <!-- Modal -->
             <div class="modal fade" id="myModal" role="dialog">

@@ -108,6 +108,12 @@ return [
         'action' => 'login'
     ],
     [
+        'method' => 'POST',
+        'path' => '/bikestores/logout',
+        'controller' => $employeeController,
+        'action' => 'logout'
+    ],
+    [
         'method' => 'PUT',
         'path' => '/bikestores/employees/update/(?P<employeeId>\d+)',
         'controller' => $employeeController,
