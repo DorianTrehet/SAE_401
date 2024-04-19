@@ -16,6 +16,9 @@ RewriteRule ^(brands|stores|products|employees|categories|stocks)$ index.php [L]
 #Get all employees
 RewriteRule ^employees/all$ index.php [L]
 
+#Get all employees from all store
+RewriteRule ^employees/all/employees$ index.php [L]
+
 # Get a single item
 RewriteRule ^(brands|categories|products|stores|employees)/(\d+)$ index.php?id=$2 [QSA,L]
 

@@ -88,7 +88,7 @@ window.addEventListener('unload', function() {
                         case 'chief':
                             echo '<li class="nav-item">
                                     <a class="nav-link" href="/bikestores/employees/all">
-                                        <h4>View Employees</h4>
+                                        <h4>Employees</h4>
                                     </a>
                                 </li>
                                 <li class="nav-item">
@@ -99,12 +99,12 @@ window.addEventListener('unload', function() {
                             break;
                         case 'it':
                             echo '<li class="nav-item">
-                                    <a class="nav-link" href="#">
-                                        <h4>View Employees</h4>
+                                    <a class="nav-link" href="/bikestores/employees/all/employees">
+                                        <h4>All Employees</h4>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">
+                                    <a class="nav-link" href="/bikestores/app/src/View/AddEmployees.php">
                                         <h4>Add Employee</h4>
                                     </a>
                                 </li>';

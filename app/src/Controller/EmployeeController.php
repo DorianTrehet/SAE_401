@@ -41,6 +41,28 @@ class EmployeeController
         echo json_encode($employees);
     }
 
+    public function getAllEmployeesAnyStore()
+    {
+        // Récupération de tous les employés
+        $employees = $this->employeeRepository->findAll();
+    
+        // Convertir les données des employés en chaîne JSON
+        $jsonData = json_encode($employees);
+    
+        // Démarrer une session PHP
+        session_start();
+    
+        // Stocker les données JSON dans une variable de session
+        $_SESSION['all_employees_data'] = $jsonData;
+    
+        // Redirection vers la page AllEmployeesAnyStore.php
+        header('Location: /bikestores/app/src/View/AllEmployeesAnyStore.php');
+        exit;
+    }
+    
+    
+
+
     /**
      * Get all employees of a store by store ID
      * @param int $storeId The ID of the store
@@ -69,18 +91,18 @@ class EmployeeController
      */
     public function addEmployee()
     {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['employee_name']) && isset($_POST['employee_email']) && isset($_POST['employee_password']) && isset($_POST['employee_role']) && isset($_POST['store_id'])) {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['employeeName']) && isset($_POST['employeeEmail']) && isset($_POST['employeePassword']) && isset($_POST['employeeRole']) && isset($_POST['storeId'])) {
 
             if (!isset($_POST["API_KEY"]) || $_POST['API_KEY'] !== self::API_KEY) {
                 echo json_encode(["error" => "Invalid API Key"]);
                 return;
             }
 
-            $storeId = $_POST['store_id'];
-            $employeeName = $_POST['employee_name'];
-            $employeeEmail = $_POST['employee_email'];
-            $employeePassword = $_POST['employee_password'];
-            $employeeRole = $_POST['employee_role'];
+            $storeId = $_POST['storeId'];
+            $employeeName = $_POST['employeeName'];
+            $employeeEmail = $_POST['employeeEmail'];
+            $employeePassword = $_POST['employeePassword'];
+            $employeeRole = $_POST['employeeRole'];
 
             // Retrieve the Stores instance corresponding to storeId
             $store = $this->entityManager->getRepository(Stores::class)->find($storeId);
@@ -90,16 +112,25 @@ class EmployeeController
             }
 
             $employee = new Employees();
-            $employee->setStore($store); // Pass the Stores instance to setStore()
+            $employee->setStore($store); 
             $employee->setEmployeeName($employeeName);
             $employee->setEmployeeEmail($employeeEmail);
             $employee->setEmployeePassword($employeePassword);
             $employee->setEmployeeRole($employeeRole);
 
+        // Afficher les valeurs récupérées
+        echo 'Store ID: ' . $storeId . '<br>';
+        echo 'Employee Name: ' . $employeeName . '<br>';
+        echo 'Employee Email: ' . $employeeEmail . '<br>';
+        echo 'Employee Email: ' . $employeePassword . '<br>';
+        echo 'Employee Role: ' . $employeeRole . '<br>';
+
             $this->entityManager->persist($employee);
             $this->entityManager->flush();
-            header('Content-Type: application/json');
             echo json_encode(['success' => 'Employee added successfully']);
+        }
+        else{
+            echo "Error";
         }
     }
 
