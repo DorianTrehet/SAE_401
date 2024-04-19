@@ -3,9 +3,17 @@
 <div class="container">
     <h1>Add New Stock</h1>
     <form action="/bikestores/stocks/create" method="POST">
+    <div class="form-group">
+            <label for="storeId">Store ID:</label>
+            <input type="number" class="form-control" id="storeId" name="storeId" placeholder="Enter store ID" required>
+        </div>
         <div class="form-group">
-            <label for="stockQuantity">Stock Quantity:</label>
-            <input type="number" class="form-control" id="stockQuantity" name="stockQuantity" placeholder="Enter stock quantity" required>
+            <label for="productId">Product ID:</label>
+            <input type="number" class="form-control" id="productId" name="productId" placeholder="Enter product ID" required>
+        </div>
+        <div class="form-group">
+            <label for="quantity">Quantity:</label>
+            <input type="number" class="form-control" id="quantity" name="quantity" placeholder="Enter quantity" required>
         </div>
         <div class="form-group">
             <label for="apiKey">API Key:</label>

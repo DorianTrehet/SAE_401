@@ -161,6 +161,12 @@ return [
 
     //class stock
     [
+        'method' => 'POST',
+        'path' => '/bikestores/stocks/create',
+        'controller' => $stockController,
+        'action' => 'createStock'
+    ],
+    [
         'method' => 'PUT',
         'path' => '/bikestores/stocks/update/(?P<stockId>\d+)',
         'controller' => $stockController,
