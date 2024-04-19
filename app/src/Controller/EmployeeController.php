@@ -186,12 +186,19 @@ public function login()
             return;
         }
 
-        // Verify password
-        if (!password_verify($password, $employee->getEmployeePassword())) {
-            // If password doesn't match, return an error response
+        $employeePwd = $employee->getEmployeePassword();
+
+        if($employeePwd != $password){
             echo json_encode(["error" => "Invalid password"]);
             return;
         }
+
+        // // Verify password
+        // if (!password_verify($password, $employee->getEmployeePassword())) {
+        //     // If password doesn't match, return an error response
+        //     echo json_encode(["error" => "Invalid password"]);
+        //     return;
+        // }
 
         // If email and password are correct, redirect the user to a different page upon successful login
         header('Location: EmployeeView.php');
