@@ -42,6 +42,29 @@ class EmployeeController
     }
 
     /**
+     * Get all employees of a store by store ID
+     * @param int $storeId The ID of the store
+     */
+    public function getEmployeesByStoreId()
+    {
+        if(isset($_COOKIE['user_store'])) {
+            $storeId = $_COOKIE['user_store'];
+
+            $employees = $this->entityManager->getRepository(Employees::class)->findBy(['store' => $storeId]);
+
+            $jsonData = json_encode($employees);
+
+            setcookie('employees_data', $jsonData, time() + 3600, '/'); 
+            header('Location: /bikestores/app/src/View/AllEmployees.php');
+            exit; 
+
+        } else {
+            echo json_encode(["error" => "User store ID not found in cookie"]);
+        }
+    }
+
+
+    /**
      * Add a new employee
      */
     public function addEmployee()
@@ -198,6 +221,7 @@ public function login()
         setcookie('user_email', $email, time() + (86400 * 30), '/');
         setcookie('user_name', $employee->getEmployeeName(), time() + (86400 * 30), '/');
         setcookie('user_role', $employee->getEmployeeRole(), time() + (86400 * 30), '/');
+        setcookie('user_store', $employee->getStoreId(), time() + (86400 * 30), '/');
 
         // If email and password are correct, redirect the user to a different page upon successful login
         header('Location: app/src/View/EmployeeView.php');

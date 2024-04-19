@@ -96,6 +96,12 @@ return [
         'action' => 'getAllEmployees'
     ],
     [
+        'method' => 'GET',
+        'path' => '/bikestores/employees/all',
+        'controller' => $employeeController,
+        'action' => 'getEmployeesByStoreId'
+    ],
+    [
         'method' => 'POST',
         'path' => '/bikestores/employees/create',
         'controller' => $employeeController,

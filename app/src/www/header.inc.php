@@ -25,6 +25,16 @@
             background-color: #f9f9f9;
         }
     </style>
+    <script>
+
+function deleteCookie(name) {
+    document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+}
+
+window.addEventListener('unload', function() {
+    deleteCookie('employees_data');
+});
+    </script>
 </head>
 
 <body>
@@ -77,7 +87,7 @@
                     switch ($user_role) {
                         case 'chief':
                             echo '<li class="nav-item">
-                                    <a class="nav-link" href="#">
+                                    <a class="nav-link" href="/bikestores/employees/all">
                                         <h4>View Employees</h4>
                                     </a>
                                 </li>
