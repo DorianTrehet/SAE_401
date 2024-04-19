@@ -161,6 +161,12 @@ return [
 
     //class stock
     [
+        'method' => 'GET',
+        'path' => '/bikestores/stocks',
+        'controller' => $stockController,
+        'action' => 'getAllStocks'
+    ],
+    [
         'method' => 'POST',
         'path' => '/bikestores/stocks/create',
         'controller' => $stockController,

@@ -30,6 +30,17 @@ class StockController
     }
 
 /**
+ * Get all stocks
+ */
+public function getAllStocks()
+{
+    $stocks = $this->entityManager->getRepository(Stocks::class)->findAll();
+    header('Content-Type: application/json');
+    echo json_encode($stocks);
+}
+
+
+/**
  * Create a new stock
  */
 public function createStock()

@@ -25,7 +25,6 @@
 
 <?php include("../www/footer.inc.php"); ?>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
 $(document).ready(function() {
     // Appel AJAX pour récupérer les données des marques
@@ -35,7 +34,6 @@ $(document).ready(function() {
         success: function(response) {
             // Succès de la requête
             var brands = response; // Données des marques
-            console.log(brands);
             // Utiliser les données des marques ici
             // Par exemple, vous pouvez les afficher dans le menu déroulant
             brands.forEach(function(brand) {
@@ -72,7 +70,7 @@ $(document).ready(function() {
                 window.location.reload();
             },
             error: function(xhr, status, error) {
-                // Gérer les erreurs
+                alert("Error");
             }
         });
     });
