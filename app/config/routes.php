@@ -17,13 +17,6 @@ $stockController = new StockController($entityManager);
 $storeController = new StoreController($entityManager);
 
 return [
-    //Accueil
-    [
-        'method' => 'GET',
-        'path' => '/bikestores',
-        'controller' => null, // ou spécifiez le contrôleur si nécessaire
-        'action' => 'app/src/View/indexView.php'
-    ],
 
     //class brand
     [
