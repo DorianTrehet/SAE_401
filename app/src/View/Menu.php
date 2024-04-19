@@ -12,10 +12,10 @@
     </ul>
     <h3>Modify</h3>
     <ul>
-        <li><a href="/bikestores/update/brands">Modify Brand</a></li>
-        <li><a href="/bikestores/update/categories">Modify Category</a></li>
-        <li><a href="/bikestores/update/products">Modify Product</a></li>
-        <li><a href="/bikestores/update/stocks">Modify Stock</a></li>
+        <li><a href="/bikestores/app/src/View/ModifyBrands.php">Modify Brand</a></li>
+        <li><a href="/bikestores/app/src/View/ModifyCategories.php">Modify Category</a></li>
+        <li><a href="/bikestores/app/src/View/ModifyProducts.php">Modify Product</a></li>
+        <li><a href="/bikestores/app/src/View/ModifyStocks.php">Modify Stock</a></li>
     </ul>
     <h3>Delete</h3>
     <ul>
