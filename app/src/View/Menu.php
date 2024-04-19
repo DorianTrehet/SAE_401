@@ -19,10 +19,10 @@
     </ul>
     <h3>Delete</h3>
     <ul>
-        <li><a href="/bikestores/delete/brands">Delete Brand</a></li>
-        <li><a href="/bikestores/delete/categories">Delete Category</a></li>
-        <li><a href="/bikestores/delete/products">Delete Product</a></li>
-        <li><a href="/bikestores/delete/stocks">Delete Stock</a></li>
+        <li><a href="/bikestores/app/src/View/DeleteBrands.php">Delete Brand</a></li>
+        <li><a href="/bikestores/app/src/View/DeleteCategories.php">Delete Category</a></li>
+        <li><a href="/bikestores/app/src/View/DeleteProducts.php">Delete Product</a></li>
+        <li><a href="/bikestores/app/src/View/DeleteStocks.php">Delete Stock</a></li>
     </ul>
 </div>
 

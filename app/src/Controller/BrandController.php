@@ -138,7 +138,9 @@ class BrandController
         $brandId = $params['brandId'];
         if ($_SERVER['REQUEST_METHOD'] === 'DELETE') {
 
-            if (!isset($_POST["API_KEY"]) || $_POST['API_KEY'] !== self::API_KEY) {
+            parse_str(file_get_contents('php://input'), $_DELETE);
+
+            if (!isset($_DELETE["API_KEY"]) || $_DELETE['API_KEY'] !== self::API_KEY) {
                 echo json_encode(["error" => "Invalid API Key"]);
                 return;
             }

@@ -49,7 +49,7 @@ return [
         'controller' => $brandController,
         'action' => 'deleteBrand'
     ],
-
+    
     //class Categories
     [
         'method' => 'GET',
