@@ -52,7 +52,7 @@ window.addEventListener('unload', function() {
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="/bikestores/app/src/View/AllProducts.php">
                             <h4>Products</h4>
                         </a>
                     </li>
@@ -121,6 +121,7 @@ window.addEventListener('unload', function() {
                         </form>';
                 } else {
                     // Si le cookie user_role n'est pas défini, afficher le bouton de connexion
+                    
                     echo '<button type="button" class="btn btn-default btn-lg" id="myBtn">Login</button>';
                 }
             ?>
