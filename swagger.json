@@ -2,7 +2,7 @@
   "openapi": "3.0.0",
   "info": {
     "title": "Web service for SAE 401",
-    "description": "I created this webservice for my SAE401, ",
+    "description": "I created this webservice for my SAE401 project. This webservice will be hosted on your development site, publicly accessible via its URL without the need for specific setup or passwords. It must adhere to the standards of a RESTful API, allowing CRUD operations to be performed on the database. For example, to retrieve data from the database: A GET request to https://dev-login.users.info.unicaen.fr/bikestores/stores should return JSON containing a list of stores. A GET request to https://dev-login.users.info.unicaen.fr/bikestores/products/10 should return JSON containing the description of product number 10. POST requests will allow for insertions into the database, PUT requests for updates, and DELETE requests for deletions. Access to these database modification requests through your API will require the use of a unique access key, which must be provided for every request other than GET.",
     "version": "1.0.0"
   },
   "servers": [
