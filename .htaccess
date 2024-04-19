@@ -1,6 +1,6 @@
 Require all granted
 Options FollowSymLinks
-DirectoryIndex app/src/View/indexView.php
+DirectoryIndex index.php
 
 RewriteEngine On
 

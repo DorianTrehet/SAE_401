@@ -168,4 +168,36 @@ class EmployeeController
             return;
         }
     }
+/**
+ * Handle login process
+ */
+public function login()
+{
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+
+        // Fetch the employee from the database based on the provided email
+        $employee = $this->employeeRepository->findOneBy(['employeeEmail' => $email]);
+
+        if (!$employee) {
+            // If no employee found with provided email, return an error response
+            echo json_encode(["error" => "Invalid email"]);
+            return;
+        }
+
+        // Verify password
+        if (!password_verify($password, $employee->getEmployeePassword())) {
+            // If password doesn't match, return an error response
+            echo json_encode(["error" => "Invalid password"]);
+            return;
+        }
+
+        // If email and password are correct, redirect the user to a different page upon successful login
+        header('Location: EmployeeView.php');
+        exit;
+    }
+}
+
+    
 }
