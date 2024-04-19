@@ -133,7 +133,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">
+                                    <a class="nav-link" href="/bikestores/app/src/View/AddEmployees.php">
                                         <h4>Add Employee</h4>
                                     </a>
                                 </li>';
