@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="app/scripts/css/style.css">
+    <link rel="stylesheet" href="/bikestores/app/scripts/css/style.css">
     <style>
         .modal-header,
         .close {
@@ -30,14 +30,14 @@
 <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">BikeStore</a>
+            <a class="navbar-brand" href="/bikestores">BikeStore</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarText">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">
+                        <a class="nav-link active" aria-current="page" href="/bikestores">
                             <h4>Home</h4>
                         </a>
                     </li>
@@ -110,6 +110,9 @@
                                 </li>';
                     }
                     echo '</ul>';
+                ?>
+            </div>
+            <?php
                     // Bouton de déconnexion
                     echo '<form method="POST" action="/bikestores/logout">
                             <button type="submit" class="btn btn-default btn-lg">Logout</button>
@@ -118,8 +121,7 @@
                     // Si le cookie user_role n'est pas défini, afficher le bouton de connexion
                     echo '<button type="button" class="btn btn-default btn-lg" id="myBtn">Login</button>';
                 }
-                ?>
-            </div>
+            ?>
 
             <!-- Modal -->
             <div class="modal fade" id="myModal" role="dialog">

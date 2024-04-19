@@ -215,7 +215,7 @@ public function logout()
     setcookie('user_role', '', time() - 3600, '/');
 
     // Rediriger l'utilisateur vers la page de connexion
-    header('Location: app/src/View/indexView.php');
+    header('Location: /bikestores');
     exit;
 }
 
