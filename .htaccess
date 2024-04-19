@@ -4,6 +4,9 @@ DirectoryIndex app/src/View/indexView.php
 
 RewriteEngine On
 
+# Login
+RewriteRule ^login$ index.php [L]
+
 # Get all
 RewriteRule ^(brands|stores|products|employees|categories)$ index.php [L]
 

@@ -178,7 +178,7 @@ public function login()
         $password = $_POST['password'];
 
         // Fetch the employee from the database based on the provided email
-        $employee = $this->employeeRepository->findOneBy(['employeeEmail' => $email]);
+        $employee = $this->employeeRepository->findOneBy(['employee_email' => $email]);
 
         if (!$employee) {
             // If no employee found with provided email, return an error response
