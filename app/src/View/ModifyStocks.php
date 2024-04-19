@@ -1,5 +1,16 @@
-<?php include("../www/header.inc.php"); ?>
+<?php
+/**
+ * Modify Stock Page.
+ *
+ * This page allows users to modify stock information.
+ *
+ * @category PHP
+ * @package  BikeStores
+ * @author   Dorian Trehet
+ */
 
+include("../www/header.inc.php");
+?>
 <div class="container">
     <h1>Modify Stock</h1>
     <!-- Form for modifying stock -->
@@ -24,19 +35,45 @@
 
 <?php include("../www/footer.inc.php"); ?>
 
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
+/**
+ * Executes when the document is ready.
+ *
+ * This function initializes the page and performs an AJAX request to fetch stock data.
+ * It also handles stock selection change and form submission.
+ *
+ * @function
+ * @name documentReady
+ */
 $(document).ready(function() {
     // AJAX call to fetch stock data
     $.ajax({
         url: '/bikestores/stocks',
         type: 'GET',
+        /**
+         * Success callback function for AJAX request.
+         *
+         * @callback
+         * @name ajaxSuccess
+         * @param {Object[]} response - Response data from AJAX request.
+         */
         success: function(response) {
             var stocks = response;
             stocks.forEach(function(stock) {
                 $('#stockSelect').append('<option value="' + stock.stock_id + '">' + stock.stock_id + '</option>');
             });
         },
+        /**
+         * Error callback function for AJAX request.
+         *
+         * @callback
+         * @name ajaxError
+         * @param {Object} xhr - XMLHttpRequest object representing the AJAX request.
+         * @param {string} status - Request status.
+         * @param {string} error - Error message.
+         */
         error: function(xhr, status, error) {
             console.error(error);
         }
@@ -58,10 +95,26 @@ $(document).ready(function() {
             url: $(this).attr('action'),
             type: 'PUT',
             data: formData,
+            /**
+             * Success callback function for form submission AJAX request.
+             *
+             * @callback
+             * @name formSubmitSuccess
+             * @param {Object} response - AJAX request response.
+             */
             success: function(response) {
                 alert("Stock successfully modified");
                 window.location.reload();
             },
+            /**
+             * Error callback function for form submission AJAX request.
+             *
+             * @callback
+             * @name formSubmitError
+             * @param {Object} xhr - XMLHttpRequest object representing the AJAX request.
+             * @param {string} status - Request status.
+             * @param {string} error - Error message.
+             */
             error: function(xhr, status, error) {
                 alert("Error");
             }
@@ -69,3 +122,4 @@ $(document).ready(function() {
     });
 });
 </script>
+

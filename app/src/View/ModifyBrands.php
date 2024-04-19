@@ -1,5 +1,16 @@
-<?php include("../www/header.inc.php"); ?>
+<?php
+/**
+ * Modify Brand Page.
+ *
+ * This page allows users to modify a brand's information.
+ *
+ * @category PHP
+ * @package  BikeStores
+ * @author   YourName
+ */
 
+include("../www/header.inc.php");
+?>
 <div class="container">
     <h1>Modify Brand</h1>
     <!-- Form for modifying brand -->
@@ -25,56 +36,96 @@
 
 <?php include("../www/footer.inc.php"); ?>
 
+
 <script>
+/**
+ * Executes when the document is ready.
+ *
+ * This function initializes the page and performs an AJAX request to fetch brand data.
+ * It also handles brand selection change and form submission.
+ *
+ * @function
+ * @name documentReady
+ */
 $(document).ready(function() {
-    // Appel AJAX pour récupérer les données des marques
+    // AJAX call to fetch brand data
     $.ajax({
-        url: '/bikestores/brands', // URL de la route pour récupérer les marques
+        url: '/bikestores/brands', // URL for fetching brands
         type: 'GET',
+        /**
+         * Success callback function for AJAX request.
+         *
+         * @callback
+         * @name ajaxSuccess
+         * @param {Object[]} response - Response data from AJAX request.
+         */
         success: function(response) {
-            // Succès de la requête
-            var brands = response; // Données des marques
-            // Utiliser les données des marques ici
-            // Par exemple, vous pouvez les afficher dans le menu déroulant
+            // Successful request
+            var brands = response; // Brand data
+            // Use brand data here
+            // For example, you can populate them in the dropdown menu
             brands.forEach(function(brand) {
                 $('#brandSelect').append('<option value="' + brand.brand_id + '">' + brand.brand_name + '</option>');
             });
         },
+        /**
+         * Error callback function for AJAX request.
+         *
+         * @callback
+         * @name ajaxError
+         * @param {Object} xhr - XMLHttpRequest object representing the AJAX request.
+         * @param {string} status - Request status.
+         * @param {string} error - Error message.
+         */
         error: function(xhr, status, error) {
-            // Gérer les erreurs de la requête
+            // Handle request errors
             console.error(error);
         }
     });
 
-    // Code JavaScript pour mettre à jour l'action du formulaire avec la valeur sélectionnée du menu déroulant
+    // JavaScript code to update form action with selected dropdown value
     $('#brandSelect').change(function() {
         var selectedBrandId = $(this).val();
         console.log(selectedBrandId);
         $('#modifyBrandForm').attr('action', '/bikestores/brands/update/' + selectedBrandId);
     });
 
-    // Soumettre le formulaire en utilisant la méthode PUT lorsqu'il est envoyé
+    // Submit the form using PUT method when it is submitted
     $('#modifyBrandForm').submit(function(e) {
-        e.preventDefault(); // Empêche la soumission du formulaire par défaut
+        e.preventDefault(); // Prevent default form submission
 
-        var formData = $(this).serialize(); // Récupère les données du formulaire
+        var formData = $(this).serialize(); // Get form data
 
         $.ajax({
             url: $(this).attr('action'),
             type: 'PUT',
             data: formData,
+            /**
+             * Success callback function for form submission AJAX request.
+             *
+             * @callback
+             * @name formSubmitSuccess
+             * @param {Object} response - AJAX request response.
+             */
             success: function(response) {
-                // Afficher un message de succès
+                // Show success message
                 alert("Brand successfully modified");
-                // Recharger la page
+                // Reload the page
                 window.location.reload();
             },
+            /**
+             * Error callback function for form submission AJAX request.
+             *
+             * @callback
+             * @name formSubmitError
+             * @param {Object} xhr - XMLHttpRequest object representing the AJAX request.
+             * @param {string} status - Request status.
+             * @param {string} error - Error message.
+             */
             error: function(xhr, status, error) {
                 alert("Error");
             }
         });
     });
 });
-
-
 </script>

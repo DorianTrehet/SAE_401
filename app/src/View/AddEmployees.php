@@ -1,4 +1,19 @@
-<?php include("../www/header.inc.php"); ?>
+<?php
+/**
+ * Add New Employee Page
+ *
+ * This page allows users to add a new employee to the system.
+ *
+ * PHP version 7.0
+ *
+ * @category PHP
+ * @package  BikeStores
+ * @author   Dorian Trehet
+ */
+
+// Including header file
+include "../www/header.inc.php";
+?>
 
 <div class="container">
     <h1>Add New Employee</h1>
@@ -38,9 +53,17 @@
     </form>
 </div>
 
-<?php include("../www/footer.inc.php"); ?>
+<?php
+// Including footer file
+include "../www/footer.inc.php";
+?>
 
 <script>
+/**
+ * PopulateStoreDropdown - Populates the store dropdown with store names and IDs.
+ *
+ * This function fetches store names and IDs using AJAX and populates the dropdown.
+ */
 $(document).ready(function() {
     $.ajax({
         url: '/bikestores/stores', 
@@ -55,6 +78,5 @@ $(document).ready(function() {
             console.error(error);
         }
     });
-
 });
 </script>

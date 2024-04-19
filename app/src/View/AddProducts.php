@@ -1,9 +1,24 @@
-<?php include("../www/header.inc.php"); ?>
+<?php
+/**
+ * Add New Product Page
+ *
+ * This page allows users to add a new product to the system.
+ *
+ * PHP version 7.0
+ *
+ * @category PHP
+ * @package  BikeStores
+ * @author   Dorian Trehet
+ */
+
+// Including header file
+include "../www/header.inc.php";
+?>
 
 <div class="container">
     <h1>Add New Product</h1>
     <form action="/bikestores/products/create" method="POST">
-    <div class="form-group">
+        <div class="form-group">
             <label for="productName">Product Name:</label>
             <input type="text" class="form-control" id="productName" name="productName" placeholder="Enter product name" required>
         </div>
@@ -31,4 +46,7 @@
     </form>
 </div>
 
-<?php include("../www/footer.inc.php"); ?>
+<?php
+// Including footer file
+include "../www/footer.inc.php";
+?>

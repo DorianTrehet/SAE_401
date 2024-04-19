@@ -1,5 +1,16 @@
-<?php include("../www/header.inc.php"); ?>
+<?php
+/**
+ * Add/Modify/Delete Page.
+ *
+ * This page provides links to add, modify, and delete operations for brands, categories, products, and stocks.
+ *
+ * @category PHP
+ * @package  BikeStores
+ * @author   Dorian Trehet
+ */
 
+include("../www/header.inc.php");
+?>
 <!-- Add view content -->
 <div class="container">
     <h1>Add/Modify/Delete</h1>

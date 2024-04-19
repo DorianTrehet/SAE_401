@@ -1,4 +1,19 @@
-<?php include("../www/header.inc.php"); ?>
+<?php
+/**
+ * Delete Category Page
+ *
+ * This page allows users to delete a category.
+ *
+ * PHP version 7.0
+ *
+ * @category PHP
+ * @package  BikeStores
+ * @author   Dorian Trehet
+ */
+
+// Including header file
+include "../www/header.inc.php";
+?>
 
 <div class="container">
     <h1>Delete Category</h1>
@@ -18,12 +33,17 @@
     </form>
 </div>
 
-<?php include("../www/footer.inc.php"); ?>
+<?php
+// Including footer file
+include "../www/footer.inc.php";
+?>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
+/**
+ * Function to load categories via AJAX and populate the category selection dropdown.
+ */
 $(document).ready(function() {
-    // AJAX call to fetch category data
     $.ajax({
         url: '/bikestores/categories',
         type: 'GET',
@@ -38,13 +58,19 @@ $(document).ready(function() {
         }
     });
 
-    // Code JavaScript pour mettre à jour l'action du formulaire avec la valeur sélectionnée du menu déroulant
+    /**
+     * Event handler for when the category selection changes.
+     * Updates the form action with the selected category's ID.
+     */
     $('#categorySelect').change(function() {
         var selectedCategoryId = $(this).val();
         $('#deleteCategoryForm').attr('action', '/bikestores/categories/delete/' + selectedCategoryId);
     });
 
-    // Submit form when submitted
+    /**
+     * Event handler for form submission.
+     * Sends an AJAX DELETE request to delete the selected category.
+     */
     $('#deleteCategoryForm').submit(function(e) {
         e.preventDefault();
 

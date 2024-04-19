@@ -1,13 +1,20 @@
 <?php
-// Vérifiez d'abord si le cookie existe et s'il contient l'ID de l'employé
+/**
+ * Check if the employee ID exists in the cookie and retrieve it.
+ * 
+ * This section checks if the user ID cookie exists and retrieves the employee ID from it.
+ *
+ * PHP version 7.0
+ *
+ * @category PHP
+ * @package  BikeStores
+ * @author   Dorian Trehet
+ */
+
 if(isset($_COOKIE['user_id'])) {
-    // Récupérez l'ID de l'employé à partir du cookie
     $employeeId = $_COOKIE['user_id'];
 
-    // Assurez-vous de valider et de sécuriser l'ID de l'employé avant de l'utiliser
 } else {
-    // Gérez le cas où le cookie n'existe pas ou ne contient pas l'ID de l'employé
-    // Vous pouvez rediriger l'utilisateur vers une page de connexion ou afficher un message d'erreur
     echo "Employee ID not found in the cookie.";
 }
 ?>
@@ -35,6 +42,9 @@ if(isset($_COOKIE['user_id'])) {
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
+/**
+ * Function to submit the edit profile form via AJAX.
+ */
 $(document).ready(function() {
     // Submit form when submitted
     $('#editProfileForm').submit(function(e) {
@@ -48,7 +58,6 @@ $(document).ready(function() {
             data: formData,
             success: function(response) {
                 alert("Profile successfully updated");
-                // Vous pouvez rediriger l'utilisateur vers une autre page ici si nécessaire
             },
             error: function(xhr, status, error) {
                 alert("Error");

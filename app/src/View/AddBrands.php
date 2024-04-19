@@ -1,4 +1,19 @@
-<?php include("../www/header.inc.php"); ?>
+<?php
+/**
+ * Add New Brand Page
+ *
+ * This page allows users to add a new brand to the system.
+ *
+ * PHP version 7.0
+ *
+ * @category PHP
+ * @package  BikeStores
+ * @author   Dorian Trehet
+ */
+
+// Including header file
+include "../www/header.inc.php";
+?>
 
 <div class="container">
     <h1>Add New Brand</h1>
@@ -15,4 +30,7 @@
     </form>
 </div>
 
-<?php include("../www/footer.inc.php"); ?>
+<?php
+// Including footer file
+include "../www/footer.inc.php";
+?>

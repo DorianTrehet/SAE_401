@@ -1,4 +1,20 @@
 <?php include("../www/header.inc.php"); ?>
+
+<?php
+/**
+ * BikeStore homepage.
+ *
+ * This section displays the homepage of BikeStore, including a brief description and a map showing store locations.
+ *
+ * PHP version 7.0
+ *
+ * @category PHP
+ * @package  BikeStores
+ * @author   Dorian Trehet
+ */
+
+?>
+
 <div class="container-fluid bg-dark text-light p-5">
     <div class="container">
         <h1 class="display-4">BikeStore</h1>
@@ -9,28 +25,28 @@
 <div class="container mt-4">
     <div id="map" style="height: 500px;"></div>
 </div>
-<!-- Fichiers Javascript -->
+<!-- JavaScript files -->
 <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js" integrity="sha512-/Nsx9X4HebavoBvEBuyp3I7od5tA0UzAxs+j83KgC8PU0kgB4XiK4Lfe4y4cgBtaRJQEIFCW+oC506aPT2L1zw==" crossorigin=""></script>
 <script type="text/javascript">
-    // On initialise la latitude et la longitude de Paris (centre de la carte)
+    // Initialize latitude and longitude for the center of the map
     var lat = 36.963343;
     var lon = -121.968305;
     var macarte = null;
-    // Fonction d'initialisation de la carte
+    // Function to initialize the map
     function initMap() {
-        // Créer l'objet "macarte" et l'insèrer dans l'élément HTML qui a l'ID "map"
+        // Create the "macarte" object and insert it into the HTML element with ID "map"
         macarte = L.map('map', {
-            zoomControl: false // Désactiver les boutons de zoom avant et arrière
-        }).setView([lat, lon], 3); // Zoom plus large pour afficher les marqueurs
-        // Leaflet ne récupère pas les cartes (tiles) sur un serveur par défaut. Nous devons lui préciser où nous souhaitons les récupérer. Ici, openstreetmap.fr
+            zoomControl: false // Disable zoom in and out buttons
+        }).setView([lat, lon], 3); // Larger zoom to display markers
+        // Leaflet does not fetch tiles from a server by default. We need to specify where we want to fetch them from. Here, openstreetmap.fr
         L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
-            // Il est toujours bien de laisser le lien vers la source des données
-            attribution: 'données © <a href="//osm.org/copyright">OpenStreetMap</a>/ODbL - rendu <a href="//openstreetmap.fr">OSM France</a>',
+            // It's always good to leave a link to the data source
+            attribution: 'data © <a href="//osm.org/copyright">OpenStreetMap</a>/ODbL - rendering <a href="//openstreetmap.fr">OSM France</a>',
             minZoom: 1,
             maxZoom: 20
         }).addTo(macarte);
 
-        // Ajouter les marqueurs pour les magasins
+        // Add markers for stores
         var stores = [
             { name: 'Store 1', lat: 36.963343, lon: -121.968305 },
             { name: 'Store 2', lat: 43.0014907, lon: -83.5826126 },
@@ -43,8 +59,9 @@
         });
     }
     window.onload = function() {
-        // Fonction d'initialisation qui s'exécute lorsque le DOM est chargé
+        // Initialize function that runs when the DOM is loaded
         initMap();
     };
 </script>
+
 <?php include("../www/footer.inc.php"); ?>

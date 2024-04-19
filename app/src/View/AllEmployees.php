@@ -1,4 +1,19 @@
-<?php include("../www/header.inc.php"); ?>
+<?php
+/**
+ * All Employees Page
+ *
+ * This page displays a table of all employees.
+ *
+ * PHP version 7.0
+ *
+ * @category PHP
+ * @package  BikeStores
+ * @author   Dorian Trehet
+ */
+
+// Including header file
+include "../www/header.inc.php";
+?>
 
 <div class="container">
     <h1>All Employees</h1>
@@ -18,9 +33,9 @@
 
                 $cookieName = 'employees_data';
                 if(isset($_COOKIE[$cookieName])) {
-                    $employeesData = json_decode($_COOKIE[$cookieName], true); // Décoder les données JSON
+                    $employeesData = json_decode($_COOKIE[$cookieName], true); // Decode JSON data
 
-                    // Assurez-vous que $employeesData est un tableau associatif
+                    // Ensure $employeesData is an associative array
                     if(is_array($employeesData)) {
                         foreach ($employeesData as $employee) {
             ?>
@@ -33,7 +48,7 @@
             <?php 
                         }
                     } else {
-                        // Affiche un message si les données ne sont pas au format attendu
+                        // Display message if data is not in expected format
                         echo "<tr><td colspan='4'>Invalid employee data format.</td></tr>";
                     }
                 } else {
@@ -47,4 +62,7 @@
     </table>
 </div>
 
-<?php include("../www/footer.inc.php"); ?>
+<?php
+// Including footer file
+include "../www/footer.inc.php";
+?>

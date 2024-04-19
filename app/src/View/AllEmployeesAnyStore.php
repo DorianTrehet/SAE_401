@@ -1,4 +1,19 @@
-<?php include("../www/header.inc.php"); ?>
+<?php
+/**
+ * All Employees Page
+ *
+ * This page displays a table of all employees retrieved from the session.
+ *
+ * PHP version 7.0
+ *
+ * @category PHP
+ * @package  BikeStores
+ * @author   Dorian Trehet
+ */
+
+// Including header file
+include "../www/header.inc.php";
+?>
 
 <div class="container">
     <h1>All Employees</h1>
@@ -13,15 +28,10 @@
         </thead>
         <tbody>
             <?php 
-            // Vérifier si les données des employés sont disponibles dans la session
             if(isset($_SESSION['all_employees_data'])) {
-                // Récupérer les données JSON des employés depuis la session
                 $jsonData = $_SESSION['all_employees_data'];
-
-                // Convertir les données JSON en tableau associatif
                 $employeesData = json_decode($jsonData, true);
-                echo $employeesData;
-                // Afficher les employés dans un tableau
+
                 foreach ($employeesData as $employee) {
             ?>
             <tr>
@@ -31,9 +41,8 @@
                 <td><?php echo $employee['employee_role']; ?></td>
             </tr>
             <?php 
-                } // Fin de la boucle foreach
+                }
             } else {
-                // Afficher un message si les données des employés ne sont pas disponibles
                 echo "<tr><td colspan='4'>No employee data available.</td></tr>";
             }
             ?>
@@ -41,4 +50,7 @@
     </table>
 </div>
 
-<?php include("../www/footer.inc.php"); ?>
+<?php
+// Including footer file
+include "../www/footer.inc.php";
+?>

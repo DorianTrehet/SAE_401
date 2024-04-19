@@ -1,4 +1,20 @@
-<?php include("../www/header.inc.php"); ?>
+<?php
+/**
+ * Product Catalog Page
+ *
+ * This page displays a product catalog with filtering options.
+ *
+ * PHP version 7.0
+ *
+ * @category PHP
+ * @package  BikeStores
+ * @author   Dorian Trehet
+ */
+
+// Including header file
+include "../www/header.inc.php";
+?>
+
 <div class="container mt-5">
     <h1 class="mb-4">Product Catalog</h1>
     <div class="row">
@@ -47,43 +63,51 @@
         </div>
     </div>
 </div>
-<?php include("../www/footer.inc.php"); ?>
+
+<?php
+// Including footer file
+include "../www/footer.inc.php";
+?>
 
 <script>
-    $(document).ready(function() {
-        // Fonction pour charger et afficher les produits
-        function loadProducts() {
-            $.ajax({
-                url: '/bikestores/products', // Endpoint pour récupérer tous les produits
-                type: 'GET',
-                success: function(response) {
-                    var products = response; // Données des produits
-                    console.log(products);
-                    var productList = $('#productList'); // Sélection de la liste des produits
-                    
-                    // Parcours des produits et création des cartes Bootstrap pour chaque produit
-                    products.forEach(function(product) {
-                        // Construction de la carte Bootstrap pour le produit
-                        var cardHtml = '<div class="col-md-4 mb-4">';
-                        cardHtml += '<div class="card">';
-                        cardHtml += '<div class="card-body">';
-                        cardHtml += '<strong><h4 class="card-title">' + product.product_name + '</h4></strong>';
-                        cardHtml += '<p class="card-text">Year : ' + product.model_year + '</p>';
-                        cardHtml += '<p class="card-text">Price: $' + product.list_price + '</p>';
-                        cardHtml += '<strong><p class="card-text">Category : ' + product.category.category_name + '</p></strong>';
-                        cardHtml += '</div></div></div>';
-                        
-                        // Ajout de la carte à la liste des produits
-                        productList.append(cardHtml);
-                    });
-                },
-                error: function(xhr, status, error) {
-                    console.error(error);
-                }
-            });
-        }
-        
-        // Charger et afficher les produits lorsque la page est prête
-        loadProducts();
-    });
+/**
+ * Load and display products.
+ *
+ * This function sends an AJAX request to fetch all products and dynamically
+ * inserts them into the product list.
+ */
+$(document).ready(function() {
+    function loadProducts() {
+        $.ajax({
+            url: '/bikestores/products', // Endpoint to retrieve all products
+            type: 'GET',
+            success: function(response) {
+                var products = response; // Product data
+                var productList = $('#productList'); // Selecting the product list
+
+                // Iterate through products and create Bootstrap cards for each product
+                products.forEach(function(product) {
+                    // Constructing the Bootstrap card for the product
+                    var cardHtml = '<div class="col-md-4 mb-4">';
+                    cardHtml += '<div class="card">';
+                    cardHtml += '<div class="card-body">';
+                    cardHtml += '<strong><h4 class="card-title">' + product.product_name + '</h4></strong>';
+                    cardHtml += '<p class="card-text">Year : ' + product.model_year + '</p>';
+                    cardHtml += '<p class="card-text">Price: $' + product.list_price + '</p>';
+                    cardHtml += '<strong><p class="card-text">Category : ' + product.category.category_name + '</p></strong>';
+                    cardHtml += '</div></div></div>';
+
+                    // Adding the card to the product list
+                    productList.append(cardHtml);
+                });
+            },
+            error: function(xhr, status, error) {
+                console.error(error);
+            }
+        });
+    }
+
+    // Load and display products when the page is ready
+    loadProducts();
+});
 </script>

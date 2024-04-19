@@ -1,9 +1,24 @@
-<?php include("../www/header.inc.php"); ?>
+<?php
+/**
+ * Add New Stock Page
+ *
+ * This page allows users to add new stock to the system.
+ *
+ * PHP version 7.0
+ *
+ * @category PHP
+ * @package  BikeStores
+ * @author   Dorian Trehet
+ */
+
+// Including header file
+include "../www/header.inc.php";
+?>
 
 <div class="container">
     <h1>Add New Stock</h1>
     <form action="/bikestores/stocks/create" method="POST">
-    <div class="form-group">
+        <div class="form-group">
             <label for="storeId">Store ID:</label>
             <input type="number" class="form-control" id="storeId" name="storeId" placeholder="Enter store ID" required>
         </div>
@@ -23,4 +38,7 @@
     </form>
 </div>
 
-<?php include("../www/footer.inc.php"); ?>
+<?php
+// Including footer file
+include "../www/footer.inc.php";
+?>

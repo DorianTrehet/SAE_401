@@ -1,5 +1,16 @@
-<?php include("../www/header.inc.php"); ?>
+<?php
+/**
+ * Modify Category Page.
+ *
+ * This page allows users to modify a category's information.
+ *
+ * @category PHP
+ * @package  BikeStores
+ * @author   Dorian Trehet
+ */
 
+include("../www/header.inc.php");
+?>
 <div class="container">
     <h1>Modify Category</h1>
     <!-- Form for modifying category -->
@@ -25,51 +36,93 @@
 
 <?php include("../www/footer.inc.php"); ?>
 
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
+/**
+ * Executes when the document is ready.
+ *
+ * This function initializes the page and performs an AJAX request to fetch category data.
+ * It also handles category selection change and form submission.
+ *
+ * @function
+ * @name documentReady
+ */
 $(document).ready(function() {
-    // Appel AJAX pour récupérer les données des catégories
+    // AJAX call to fetch category data
     $.ajax({
-        url: '/bikestores/categories', // URL de la route pour récupérer les catégories
+        url: '/bikestores/categories', // URL for fetching categories
         type: 'GET',
+        /**
+         * Success callback function for AJAX request.
+         *
+         * @callback
+         * @name ajaxSuccess
+         * @param {Object[]} response - Response data from AJAX request.
+         */
         success: function(response) {
-            // Succès de la requête
-            var categories = response; // Données des catégories
-            // Utiliser les données des catégories ici
-            // Par exemple, vous pouvez les afficher dans le menu déroulant
+            // Successful request
+            var categories = response; // Category data
+            // Use category data here
+            // For example, you can populate them in the dropdown menu
             categories.forEach(function(category) {
                 $('#categorySelect').append('<option value="' + category.category_id + '">' + category.category_name + '</option>');
             });
         },
+        /**
+         * Error callback function for AJAX request.
+         *
+         * @callback
+         * @name ajaxError
+         * @param {Object} xhr - XMLHttpRequest object representing the AJAX request.
+         * @param {string} status - Request status.
+         * @param {string} error - Error message.
+         */
         error: function(xhr, status, error) {
-            // Gérer les erreurs de la requête
+            // Handle request errors
             console.error(error);
         }
     });
 
-    // Code JavaScript pour mettre à jour l'action du formulaire avec la valeur sélectionnée du menu déroulant
+    // JavaScript code to update form action with selected dropdown value
     $('#categorySelect').change(function() {
         var selectedCategoryId = $(this).val();
         console.log(selectedCategoryId);
         $('#modifyCategoryForm').attr('action', '/bikestores/categories/update/' + selectedCategoryId);
     });
 
-    // Soumettre le formulaire en utilisant la méthode PUT lorsqu'il est envoyé
+    // Submit the form using PUT method when it is submitted
     $('#modifyCategoryForm').submit(function(e) {
-        e.preventDefault(); // Empêche la soumission du formulaire par défaut
+        e.preventDefault(); // Prevent default form submission
 
-        var formData = $(this).serialize(); // Récupère les données du formulaire
+        var formData = $(this).serialize(); // Get form data
 
         $.ajax({
             url: $(this).attr('action'),
             type: 'PUT',
             data: formData,
+            /**
+             * Success callback function for form submission AJAX request.
+             *
+             * @callback
+             * @name formSubmitSuccess
+             * @param {Object} response - AJAX request response.
+             */
             success: function(response) {
-                // Afficher un message de succès
+                // Show success message
                 alert("Category successfully modified");
-                // Recharger la page
+                // Reload the page
                 window.location.reload();
             },
+            /**
+             * Error callback function for form submission AJAX request.
+             *
+             * @callback
+             * @name formSubmitError
+             * @param {Object} xhr - XMLHttpRequest object representing the AJAX request.
+             * @param {string} status - Request status.
+             * @param {string} error - Error message.
+             */
             error: function(xhr, status, error) {
                 alert("Error");
             }
@@ -77,3 +130,4 @@ $(document).ready(function() {
     });
 });
 </script>
+

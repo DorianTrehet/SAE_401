@@ -13,32 +13,73 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="/bikestores/app/scripts/css/style.css">
     <style>
+        .navbar {
+            background-color: #343a40; /* Couleur de fond de la barre de navigation */
+        }
+
+        .navbar-brand {
+            color: #ffffff; /* Couleur du texte de la marque */
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .navbar-brand:hover,
+        .navbar-brand:focus {
+            color: #ffffff; /* Couleur du texte de la marque au survol */
+        }
+
+        .navbar-nav .nav-item .nav-link {
+            color: #ffffff; /* Couleur du texte des liens */
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .navbar-nav .nav-item .nav-link:hover,
+        .navbar-nav .nav-item .nav-link:focus {
+            color: #ffffff; /* Couleur du texte des liens au survol */
+        }
+
+        .btn-login {
+            background-color: transparent; /* Couleur de fond du bouton de connexion */
+            border: 2px solid #ffffff; /* Bordure du bouton de connexion */
+            color: #ffffff; /* Couleur du texte du bouton de connexion */
+            font-size: 18px;
+            font-weight: bold;
+            margin-left: 80%;
+            margin-top: 10px;
+        }
+
+        .btn-login:hover,
+        .btn-login:focus {
+            background-color: #ffffff; /* Couleur de fond du bouton de connexion au survol */
+            color: #343a40; /* Couleur du texte du bouton de connexion au survol */
+        }
+
         .modal-header,
         .close {
-            background-color: #5cb85c;
-            color: white !important;
+            background-color: #343a40; /* Couleur de fond de l'en-tête de la modale */
+            color: white !important; /* Couleur du texte de l'en-tête de la modale */
             text-align: center;
             font-size: 30px;
         }
 
         .modal-footer {
-            background-color: #f9f9f9;
+            background-color: #f9f9f9; /* Couleur de fond du pied de la modale */
         }
     </style>
     <script>
+        function deleteCookie(name) {
+            document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+        }
 
-function deleteCookie(name) {
-    document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
-}
-
-window.addEventListener('unload', function() {
-    deleteCookie('employees_data');
-});
+        window.addEventListener('unload', function() {
+            deleteCookie('employees_data');
+        });
     </script>
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
             <a class="navbar-brand" href="/bikestores">BikeStore</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
@@ -122,14 +163,12 @@ window.addEventListener('unload', function() {
                 } else {
                     // Si le cookie user_role n'est pas défini, afficher le bouton de connexion
                     
-                    echo '<button type="button" class="btn btn-default btn-lg" id="myBtn">Login</button>';
+                    echo '<button type="button" class="btn btn-login btn-lg" id="myBtn">Login</button>';
                 }
             ?>
-
             <!-- Modal -->
             <div class="modal fade" id="myModal" role="dialog">
                 <div class="modal-dialog">
-
                     <!-- Modal content-->
                     <div class="modal-content">
                         <div class="modal-body" style="padding:40px 50px;">
@@ -140,18 +179,16 @@ window.addEventListener('unload', function() {
                                 </div>
                                 <div class="form-group">
                                     <label for="psw"><span class="glyphicon glyphicon-eye-open"></span> Password</label>
-                                    <input type="text" class="form-control" id="psw" name="password" placeholder="Enter password">
+                                    <input type="password" class="form-control" id="psw" name="password" placeholder="Enter password">
                                 </div>
                                 <button type="submit" class="btn btn-success btn-block"><span class="glyphicon glyphicon-off"></span> Login</button>
                             </form>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
     </nav>
-
     <script>
         $(document).ready(function() {
             $("#myBtn").click(function() {
@@ -159,5 +196,5 @@ window.addEventListener('unload', function() {
             });
         });
     </script>
-
+</body>
 </html>

@@ -1,4 +1,19 @@
-<?php include("../www/header.inc.php"); ?>
+<?php
+/**
+ * Delete Stock Page
+ *
+ * This page allows users to delete a stock.
+ *
+ * PHP version 7.0
+ *
+ * @category PHP
+ * @package  BikeStores
+ * @author   Dorian Trehet
+ */
+
+// Including header file
+include "../www/header.inc.php";
+?>
 
 <div class="container">
     <h1>Delete Stock</h1>
@@ -18,12 +33,17 @@
     </form>
 </div>
 
-<?php include("../www/footer.inc.php"); ?>
+<?php
+// Including footer file
+include "../www/footer.inc.php";
+?>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
+/**
+ * Function to load stocks via AJAX and populate the stock selection dropdown.
+ */
 $(document).ready(function() {
-    // AJAX call to fetch stock data
     $.ajax({
         url: '/bikestores/stocks',
         type: 'GET',
@@ -38,13 +58,19 @@ $(document).ready(function() {
         }
     });
 
-    // Code JavaScript pour mettre à jour l'action du formulaire avec la valeur sélectionnée du menu déroulant
+    /**
+     * Event handler for when the stock selection changes.
+     * Updates the form action with the selected stock's ID.
+     */
     $('#stockSelect').change(function() {
         var selectedStockId = $(this).val();
         $('#deleteStockForm').attr('action', '/bikestores/stocks/delete/' + selectedStockId);
     });
 
-    // Submit form when submitted
+    /**
+     * Event handler for form submission.
+     * Sends an AJAX DELETE request to delete the selected stock.
+     */
     $('#deleteStockForm').submit(function(e) {
         e.preventDefault();
 

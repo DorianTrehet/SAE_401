@@ -1,16 +1,22 @@
 <?php include("../www/header.inc.php"); ?>
 
 <?php
-// // Fonction pour récupérer tous les cookies
-// function getCookies() {
-//     $cookies = $_COOKIE;
-//     return $cookies;
-// }
+/**
+ * Retrieve cookies and check if the user is logged in.
+ * 
+ * This section retrieves cookies and checks if the user is logged in by verifying if the 'user_email' cookie exists.
+ *
+ * PHP version 7.0
+ *
+ * @category PHP
+ * @package  BikeStores
+ * @author   Dorian Trehet
+ */
 
-// Récupérer les cookies
+// Get all cookies
 $cookies = getCookies();
 
-// Vérifier si l'email de l'utilisateur est défini dans les cookies
+// Check if the 'user_email' cookie exists
 if (isset($cookies['user_email'])) {
 ?>
     <div class="container">
@@ -21,21 +27,26 @@ if (isset($cookies['user_email'])) {
             <li>Add new brands/categories/products/stocks</li>
             <li>Modify brands/categories/products/stocks</li>
             <li>Delete brands/categories/products/stocks</li>
-            <li>Edit your personnal information</li>
+            <li>Edit your personal information</li>
         </ul>
     </div>
 <?php   
 } else {
-    // If the user's email is not defined in the cookies, display an error message
+    // Display an error message if no user is connected
     echo '<p>Error: No user connected.</p>';
-
 }
 ?>
 
 <?php include("../www/footer.inc.php"); ?>
 
 <script>
-// Fonction pour récupérer tous les cookies en JavaScript
+/**
+ * Function to retrieve all cookies in JavaScript.
+ *
+ * This function splits the document.cookie string into individual cookies and creates an object with cookie names as keys and cookie values as values.
+ *
+ * @returns {Object} An object containing all cookies.
+ */
 function getCookies() {
     var cookies = document.cookie.split(';');
     var cookiesObject = {};
@@ -48,6 +59,6 @@ function getCookies() {
     return cookiesObject;
 }
 
-// Afficher tous les cookies dans la console
+// Display all cookies in the console
 console.log(getCookies());
 </script>
