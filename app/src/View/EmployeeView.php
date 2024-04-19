@@ -12,8 +12,19 @@ $cookies = getCookies();
 
 // Vérifier si l'email de l'utilisateur est défini dans les cookies
 if (isset($cookies['user_email'])) {
-    // Afficher un message de bienvenue avec le nom de l'utilisateur
-    echo '<p>Hello ' . $cookies['user_name'] . ', you are login !</p>';
+?>
+    <div class="container">
+        <h1>Welcome, <?php echo $_COOKIE['user_name']; ?>!</h1>
+        <p>You have employee privileges.</p>
+        <p>Here are your additional functionalities:</p>
+        <ul>
+            <li>Add new brands/categories/products/stocks</li>
+            <li>Modify brands/categories/products/stocks</li>
+            <li>Delete brands/categories/products/stocks</li>
+            <li>Edit your personnal information</li>
+        </ul>
+    </div>
+<?php   
 } else {
     // If the user's email is not defined in the cookies, display an error message
     echo '<p>Error: No user connected.</p>';
